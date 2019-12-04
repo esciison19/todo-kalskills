@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript + DOM</title>
+	<!-- JQUERY using cdn and local jquery.js file -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="jquery.js"></script>
+	<script src="t.js"></script>
+</head>
+<body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+		var input=document.getElementById("userinput");
+var button=document.getElementById("enter");
+var ul=document.querySelector("ul");
+var listItems=document.getElementsByTagName("li");
+function inputLength(){
+	return input.value.length;
+}
+function createListElement(){
+var li=document.createElement("li");
+	li.appendChild(document.createTextNode(input.value));
+	ul.appendChild(li);
+	input.value="";
+		var btn = document.createElement("button");
+     	btn.appendChild(document.createTextNode("Delete!"));
+ 		li.appendChild(btn);
+ 		btn.onclick = removeParent;
+}
+function addListAfterClick(){
+    if (inputLength()>0){
+    	createListElement();
+    }
+}
+function addListAfterKeypress(event){
+	  if (inputLength()>0 && event.keyCode===13){
+	  	createListElement();
+	  }
+}
+button.addEventListener("click",addListAfterClick);
+input.addEventListener("keypress",addListAfterKeypress);
+ul.onclick=function(event){
+	var target=event.target;
+	target.classList.toggle("done");
+}
+function listLength(){
+	return listItems.length;
+}
+function deleteButton(){
+	var btn=document.createElement("button");
+	btn.appendChild(document.createTextNode("Delete!"));
+	listItems[i].appendChild(btn);
+	btn.onclick=removeParent;
+}
+for( i=0;i<listLength();i++){
+deleteButton();
+}
+function removeParent(evt){
+	evt.target.parentNode.remove();
+}
+
+	</script>
+
+
+
+	<h1>To-Do List</h1>
+	<p id="first">Get it done today</p>
+	<input id="userinput" type="text" placeholder="enter items">
+	<button id="enter">Enter</button>
+	<input type="button" value="Clear" />
+	<ul id="ulist">
+		<li class="bold red" random="23">Work</li>
+		<li>Laugh</li>
+		<li>Clean Room</li>
+		<li>Poo POO</li>
+		<li>Dance</li>
+		<li>Exercise</li>
+	</ul>
+</body>
+</html>
