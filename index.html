@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TODO-Edison</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="wrapper">
+<h1>To do List</h1>
+	<div class="buttonholder">
+	<input id="userinput" type="text" placeholder="enter items">
+	<button id="enter" type="button" class="btn btn-primary">Enter</button>
+	<button id="clear" type="button" class="btn btn-danger">Clear</button>
+	</div>
+	<ul id="ulist" class="this-list " >
+		<li>Work</li>
+		<li>Laugh</li>
+		<li>Clean Room</li>
+		<li>Poo POO</li>
+		<li>Dance</li>
+		<li>Exercise</li>
+	</ul>
+</body>
+</div>
+
+	<script>
+		var input=document.getElementById("userinput");
+		var button=document.getElementById("enter");
+		var ul=document.querySelector("ul");
+		var listItems=document.getElementsByTagName("li");
+function inputLength(){
+	return input.value.length;
+}
+function createListElement(){
+var li=document.createElement("li");
+	li.appendChild(document.createTextNode(input.value));
+	ul.appendChild(li);
+	input.value="";
+		var btn = document.createElement("button");
+     	btn.appendChild(document.createTextNode("Delete!"));
+ 		li.appendChild(btn);
+ 		btn.onclick = removeParent();
+}
+function addListAfterClick(){
+    if (inputLength()>0){
+    	createListElement();
+    }
+}
+function addListAfterKeypress(event){
+	  if (inputLength()>0 && event.keyCode===13){
+	  	createListElement();
+	  }
+}
+button.addEventListener("click",addListAfterClick);
+input.addEventListener("keypress",addListAfterKeypress);
+ul.onclick=function(event){
+	var target=event.target;
+	target.classList.toggle("done");
+}
+function listLength(){
+	return listItems.length;
+}
+function deleteButton(){
+	var btn=document.createElement("button");
+	btn.appendChild(document.createTextNode("Delete!"));
+	listItems[i].appendChild(btn);
+	btn.onclick=removeParent;
+}
+for( i=0;i<listLength();i++){
+deleteButton();
+}
+function removeParent(evt){
+	evt.target.parentNode.remove();
+}
+clear.onclick = () => {
+  const myNode = document.getElementById("ulist");
+  while (myNode.firstChild) {
+    myNode.removeChild(myNode.firstChild);
+
+const mul = document.querySelector('.this-list');
+mul.addEventListener('click', function(e) {
+  this.appendChild("<del>" + e.target + "</del>");
+})
+  }
+}
+	window.onload = () => {
+    let ls = document.querySelectorAll('#ulist li');
+    ls.forEach((ele) => {
+       ele.onclick = (ele) => {
+          ele.target.style="text-decoration:line-through";
+       };
+    });
+
+}	
+	</script>
+</html>
