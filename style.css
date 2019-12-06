@@ -1,0 +1,22 @@
+
+.wrapper {
+  display: flex;
+  flex-flow: column; wrap;
+  justify-content: center;
+  text-align: center;
+}
+body{
+	background-image: url("123.png");
+
+}
+li,input{
+	font-size: 25px;
+}
+.buttonholder{
+	text-align: center;
+	justify-content: flex-start;
+}
+ul{
+	list-style: inside;
+
+}

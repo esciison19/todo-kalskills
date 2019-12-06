@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Javascript + DOM</title>
-	<!-- JQUERY using cdn and local jquery.js file -->
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script src="jquery.js"></script>
-	<script src="t.js"></script>
+	<title>TODO-Edison</title>
 </head>
 <body>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+
+<h1>To-Do List</h1>
+
+	<input id="userinput" type="text" placeholder="enter items">
+	<button id="enter">Enter</button>
+	<button id="clear">Clear</button>
+	<ul id="ulist" class="this-list">
+		<li>Work</li>
+		<li>Laugh</li>
+		<li>Clean Room</li>
+		<li>Poo POO</li>
+		<li>Dance</li>
+		<li>Exercise</li>
+	</ul>
+</body>
+
+
+	<script>
 		var input=document.getElementById("userinput");
-var button=document.getElementById("enter");
-var ul=document.querySelector("ul");
-var listItems=document.getElementsByTagName("li");
+		var button=document.getElementById("enter");
+		var ul=document.querySelector("ul");
+		var listItems=document.getElementsByTagName("li");
 function inputLength(){
 	return input.value.length;
 }
@@ -24,7 +37,7 @@ var li=document.createElement("li");
 		var btn = document.createElement("button");
      	btn.appendChild(document.createTextNode("Delete!"));
  		li.appendChild(btn);
- 		btn.onclick = removeParent;
+ 		btn.onclick = removeParent();
 }
 function addListAfterClick(){
     if (inputLength()>0){
@@ -57,23 +70,16 @@ deleteButton();
 function removeParent(evt){
 	evt.target.parentNode.remove();
 }
+clear.onclick = () => {
+  const myNode = document.getElementById("ulist");
+  while (myNode.firstChild) {
+    myNode.removeChild(myNode.firstChild);
 
+const mul = document.querySelector('.this-list');
+mul.addEventListener('click', function(e) {
+  this.appendChild("<del>" + e.target + "</del>");
+})
+  }
+}
 	</script>
-
-
-
-	<h1>To-Do List</h1>
-	<p id="first">Get it done today</p>
-	<input id="userinput" type="text" placeholder="enter items">
-	<button id="enter">Enter</button>
-	<input type="button" value="Clear" />
-	<ul id="ulist">
-		<li class="bold red" random="23">Work</li>
-		<li>Laugh</li>
-		<li>Clean Room</li>
-		<li>Poo POO</li>
-		<li>Dance</li>
-		<li>Exercise</li>
-	</ul>
-</body>
 </html>
